@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.baal.mybatis.userinfoMapper">
+	<select id="getAllUserinfo" resultType="xyz.baal.orm.User">
+		select * from user order by usid asc
+	</select>
+	<select id="getUserinfoByUsername" parameterType="String" resultType="xyz.baal.orm.User">
+		select * from
+		user where username=#{username}
+	</select>
+	<select id="getUserinfoByUsid" parameterType="int" resultType="xyz.baal.orm.User">
+		select * from
+		user where usid=#{usid}
+	</select>
+	<select id="getUserinfoByKey" parameterType="String" resultType="xyz.baal.orm.User">
+		select * from user where 1 = 1
+		<if test="_parameter != null">
+			and username like "%"#{username}"%";
+		</if>
+		order by usid asc
+	</select>		
+	<insert id="insertUserinfo" parameterType="xyz.baal.orm.User">
+		insert into user(username,password,email,authority) 
+		values(#{username},#{password},#{email},#{authority})
+	</insert>
+	<delete id="deleteUserinfoByUsid" parameterType="int">
+		delete from user where usid=#{usid}
+	</delete>
+	<update id="updateAuthorityByUsid" parameterType="xyz.baal.orm.User">
+		update user set authority=#{authority}
+		where usid=#{usid}
+	</update>
+	<update id="updatePassowordByUsid" parameterType="xyz.baal.orm.User">
+		update user set password=#{password}
+		where usid=#{usid}
+	</update>		
+</mapper>

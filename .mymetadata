@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="eBooks"
+  id="myeclipse.1466130956545"
+  context-root="/eBooks"
+  j2ee-spec="5.0"
+  archive="eBooks.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

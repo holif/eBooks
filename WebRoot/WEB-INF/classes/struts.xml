@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="struts2"   extends="struts-default">
+	<action name="Login" class="xyz.baal.action.LoginAction">
+		<result name="success">/admin/index.jsp</result>
+		<result name="error">/admin/login.jsp</result>
+	</action>
+	<action name="UserLogin" class="xyz.baal.action.LoginAction" method="user" >
+		<result name="userlogin">/index.jsp</result>
+	</action>	
+	<action name="Logout" class="xyz.baal.action.LogoutAction"/>
+	<action name="UserLogout" class="xyz.baal.action.LogoutAction" method="user" />
+	<action name="SelectBook" class="xyz.baal.action.SelectBookAction">
+		<result name="success">/admin/book.jsp</result>
+	</action>
+	<action name="SelectBookByKey" class="xyz.baal.action.SelectBookAction" method="byKey" >
+		<result name="success">/admin/book.jsp</result>
+	</action>
+	<action name="SelectBookByType" class="xyz.baal.action.SelectBookAction" method="byType" >
+		<result name="success">/admin/book.jsp</result>
+	</action>
+	<action name="BookPage" class="xyz.baal.action.SelectBookAction" method="pager" >
+		<result name="success">/admin/book.jsp</result>
+	</action>			
+	<action name="SelectUser" class="xyz.baal.action.SelectUserAction">
+		<result name="success">/admin/user.jsp</result>
+	</action>
+	<action name="SelectUserByKey" class="xyz.baal.action.SelectUserAction" method="byKey" >
+		<result name="success">/admin/user.jsp</result>
+	</action>
+	<action name="UserPage" class="xyz.baal.action.SelectUserAction" method="pager" >
+		<result name="success">/admin/user.jsp</result>
+	</action>
+	<action name="SelectComment" class="xyz.baal.action.SelectCommentAction">
+		<result name="success">/admin/comment.jsp</result>
+	</action>
+	<action name="SelectCommentByKey" class="xyz.baal.action.SelectCommentAction" method="byKey" >
+		<result name="success">/admin/comment.jsp</result>
+	</action>
+	<action name="CommentPage" class="xyz.baal.action.SelectCommentAction" method="pager" >
+		<result name="success">/admin/comment.jsp</result>
+	</action>		
+	<action name="Token" class="xyz.baal.action.TokenAction">
+		<result name="success">/admin/upload.jsp</result>
+	</action>					
+	<action name="Upload" class="xyz.baal.action.UploadAction">
+		<result name="success" type="redirectAction">SelectBook</result>
+	</action>
+	<action name="UpdateBook" class="xyz.baal.action.UpdateBookAction">
+		<result name="success" type="redirectAction">SelectBook</result>
+	</action>
+	<action name="DeleteBook" class="xyz.baal.action.UpdateBookAction" method="dele" >
+		<result name="success" type="redirectAction">SelectBook</result>
+	</action>  
+	<action name="DeleteComment" class="xyz.baal.action.DeleteCommentAction">
+		<result name="success" type="redirectAction">SelectComment</result>
+	</action>	
+	<action name="DeleteUser" class="xyz.baal.action.DeleteUserAction">
+		<result name="success" type="redirectAction">SelectUser</result>
+	</action>	
+	<action name="Register" class="xyz.baal.action.user.RegisterAction">
+		<result name="success">/result.jsp</result>
+	</action>
+	<action name="CheckUsername" class="xyz.baal.action.user.RegisterAction" method="check" />  
+	<action name="UpdatePswd" class="xyz.baal.action.UpdatePswdAction">
+		<result name="success">/admin/index.jsp</result>
+		<result name="error">/admin/index.jsp</result>		
+	</action>	
+	<action name="UpdateUserPswd" class="xyz.baal.action.UpdatePswdAction" method="user" >
+		<result name="usersuccess" type="redirectAction">Owner</result>
+		<result name="usererror" type="redirectAction">Owner</result>
+	</action>
+	<action name="Search" class="xyz.baal.action.user.SearchAction">
+		<result name="success">/index.jsp</result>
+	</action>
+	<action name="GetBook" class="xyz.baal.action.user.GetBookAction">
+		<result name="success">/book.jsp</result>
+	</action>
+	<action name="Applaud" class="xyz.baal.action.user.ApplaudAction">
+		<result name="success">/book.jsp</result>
+	</action>	
+	<action name="Comment" class="xyz.baal.action.user.CommentAction">
+		<result name="success">/book.jsp</result>
+	</action>	
+	<action name="Owner" class="xyz.baal.action.user.OwnerAction">
+		<result name="success">/owner.jsp</result>
+	</action>
+	<action name="Download" class="xyz.baal.action.user.DownloadAction">
+		<result name="success">/book.jsp</result>
+	</action>								
+</package>
+</struts>    

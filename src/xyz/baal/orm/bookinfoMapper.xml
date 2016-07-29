@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.baal.mybatis.bookinfoMapper">
+	<select id="getAllBookinfo" resultType="xyz.baal.orm.Book">
+		select * from book ORDER BY bookid
+	</select>
+	<select id="getBookinfoByType" parameterType="String" resultType="xyz.baal.orm.Book">
+		select * from
+		book where type=#{type} ORDER BY bookid
+	</select>
+	<select id="getBookinfoByName" parameterType="String" resultType="xyz.baal.orm.Book">
+		select * from
+		book where bookname=#{bookname} ORDER BY bookid
+	</select>
+	<select id="getBookinfoByBookid" parameterType="int" resultType="xyz.baal.orm.Book">
+		select * from
+		book where bookid=#{bookid}
+	</select>
+	<select id="getBookinfoByKey" parameterType="String" resultType="xyz.baal.orm.Book">
+		select * from book where 1 = 1
+		<if test="_parameter != null">
+			and bookname like "%"#{bookname}"%" or type like "%"#{bookname}"%"
+		</if>
+		GROUP BY bookid
+	</select>	
+	<insert id="insertBookinfo" parameterType="xyz.baal.orm.Book">
+		insert into book(bookname,author,type,press,abstracts,download,img) 
+		values(#{bookname},#{author},#{type},#{press},#{abstracts},#{download},#{img})
+	</insert>
+	<update id="updateBookinfo" parameterType="xyz.baal.orm.Book">
+		update book set bookname=#{bookname},author=#{author},type=#{type},
+		press=#{press},abstracts=#{abstracts},download=#{download},img=#{img}
+		where bookid=#{bookid}
+	</update>
+	<delete id="deleteBookinfoByBookid" parameterType="int">
+		delete from book where bookid=#{bookid}
+	</delete>
+</mapper>
