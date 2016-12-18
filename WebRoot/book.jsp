@@ -168,18 +168,18 @@ function check(){
 		<input type="hidden" name="bbook" id="bbook" value="${book.bookid}" />
 		<span class="booktitle">${book.bookname}</span>
 		<div class="bookimg">
-			<a href="#"><img width="107px" height="138px" src="${book.img}" /></a>
+			<a href="http://mozilla.github.io/pdf.js/web/viewer.html?file=${book.download}"><img width="107px" height="138px" src="${book.img}" /></a>
 		</div>
 		<div class="info">
 			<span class="words">作者：${book.author} </span><br/>
 			<span class="words">出版社：${book.press}</span><br/>
 			<span class="words">类别：${book.type}</span><br/>
 			<% if(request.getSession().getAttribute("usid")!=null){ %>
-			<span class="words">下载量：<a href="${book.download}" onclick="downl()"><img src="<%=basePath%>img/dl.jpg" class='dl' width="20" height="20" /></a>&nbsp;(${dl})</span><br/>
+			<span class="words">下载：<a href="${book.download}" onclick="downl()"><img src="<%=basePath%>img/dl.jpg" class='dl' width="20" height="20" /></a>&nbsp;(${dl})</span><br/>
 			<%}else{%>
-			<span class="words">下载量：<a href="javascript:void(0);" onclick="check()"><img src="<%=basePath%>img/dl.jpg" class='dl' width="20" height="20" /></a>&nbsp;(${dl})</span><br/>
+			<span class="words">下载：<a href="javascript:void(0);" onclick="check()"><img src="<%=basePath%>img/dl.jpg" class='dl' width="20" height="20" /></a>&nbsp;(${dl})</span><br/>
 			<%} %>
-			<span class="words">赞一个：<a href="#" onclick="applaud()"><img src="<%=basePath%>img/zan.png" class='zan' width="20" height="20" /></a>&nbsp;(${ap})</span><br/>
+			<span class="words">点赞：<a href="#" onclick="applaud()"><img src="<%=basePath%>img/zan.png" class='zan' width="20" height="20" /></a>&nbsp;(${ap})</span><br/>
 			<span class="words">评论：<a href="#content"><img src="<%=basePath%>img/comm.jpg" class='zan' width="20" height="20" /></a>&nbsp;(${cm})</span><br/>
 		</div>
 	</div>
