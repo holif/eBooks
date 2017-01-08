@@ -1,4 +1,5 @@
-﻿<%@page import="xyz.baal.orm.CommentList"%>
+<%@page import="xyz.baal.util.BookRecommender"%>
+<%@page import="xyz.baal.orm.CommentList"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ page language="java" import="xyz.baal.orm.Book"%>
 <%@ page import="xyz.baal.service.BookService"%>
@@ -109,7 +110,14 @@ function check(){
 	List<Book> dlbooklist = DownloadService.getBooksByDL();
 	request.setAttribute("dlbooklist", dlbooklist);
 	
-	List<Book> apbooklist = ApplaudService.getBooksByAP();
+	List<Book> apbooklist = new ArrayList<Book>();
+	if(request.getSession().getAttribute("usid")!=null){
+		int usid = Integer.parseInt(request.getSession().getAttribute("usid").toString());
+		apbooklist = BookRecommender.getBooks(usid);
+	}
+	else {
+		apbooklist = ApplaudService.getBooksByAP();
+	}
 	request.setAttribute("apbooklist", apbooklist);
 	
 	List<Book> cmbooklist = CommentService.getBooksByCM();
